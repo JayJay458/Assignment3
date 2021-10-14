@@ -4,20 +4,77 @@ let colorSelected;
 
 //Add a row
 function addR() {
-    alert("Clicked Add Row")
+    let tr=document.createElement("tr"); 
+    let td=document.createElement("td");
+    tr.appendChild(td); // create a minimum of one column
+    for(let i =1;i<numCols;i++) // if more then one create more rows accordingly
+    {
+        let td1=document.createElement("td");
+        tr.appendChild(td1);
+    }
+    numRows+=1; //increase the number of rows recorded in the system
+    if(numCols===0)//if the number of column is 0 then increase it to one
+    {
+        numCols=1;
+    }
+    let grid=document.getElementById("grid");
+    grid.appendChild(tr); //add the row to the column
+
 }
 //Add a column
 function addC() {
-    alert("Clicked Add Col")
+    let grid=document.getElementById("grid");
+    let row=grid.querySelectorAll("tr");  // return an array of all row element(tr)
+    for(let i=0;i<numRows;i++)  // add a column with respect to the rows
+    {
+        let td=document.createElement("td");
+        row[i].appendChild(td);  //adding the cell to the current row
+    }
+    numCols+=1;
+    if(numRows===0) // if no rows available create a row
+    {
+        let tr=document.createElement("tr"); 
+        let td=document.createElement("td");
+        tr.appendChild(td);
+        grid.appendChild(tr);
+        numRows=1;
+    }
+
+
+
 }
 
 //Remove a row
 function removeR() {
-    alert("Clicked Remove Row")
+    if(numRows===0)
+    {
+        alert("There's no rows to be deleted");
+    }
+    else
+    {
+        let grid=document.getElementById("grid");
+        let lastRow=grid.lastElementChild; //get the last element of the row
+        let remove=grid.removeChild(lastRow);
+        numRows-=1; //decrease row count by one
+    }
 }
 //Remove a column
 function removeC() {
-    alert("Clicked Remove Col")
+    if(numCols===0)
+    {
+        alert("There's no more columns to be deleted");
+    }
+    else
+    {
+        let grid =document.getElementById("grid"); 
+        let row=grid.querySelectorAll("tr");
+        for(let i=0;i<numRows;i++) //remove one cell from every row
+        {
+            let lastCell=row[i].lastElementChild; //select the last element of every row
+            let remove=row[i].removeChild(lastCell);
+        }
+        numCols-=1; //decrease column count by one
+    }
 }
 //sets global var for selected color
 function selected(){
