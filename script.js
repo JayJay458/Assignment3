@@ -1,6 +1,6 @@
 let numRows = 0;
 let numCols = 0;
-let colorSelected; 
+let colorSelected = "White"; 
 
 //Add a row
 function addR() {
@@ -82,6 +82,7 @@ function selected(){
     console.log(colorSelected);
 }
 
+
 function fill(){
     alert("Clicked Fill All")
 }
@@ -93,3 +94,32 @@ function clearAll(){
 function fillU(){
     alert("Clicked Fill All Uncolored")
 }
+
+
+
+
+//changes the color of a selected cell to the global color value
+function changeColor(){
+    let grid=document.getElementById("grid");
+    
+}
+
+
+function addRowHandlers() {
+    let grid=document.getElementById("grid");
+    var rows = grid.getElementsByTagName("tr");
+        for (i = 0; i < rows.length; i++) {
+            var currentRow = grid.rows[i];
+            var createClickHandler = 
+                function(row) 
+                {
+                    return function() { 
+                                            var cell = row.getElementsByTagName("td")[0];
+                                            alert("clicked cell");
+                                     };
+                };
+    
+            currentRow.onclick = createClickHandler(currentRow);
+        }
+    }
+window.onload = addRowHandlers();
