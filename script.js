@@ -13,7 +13,7 @@ function addR() {
     for(let i =1;i<numCols;i++) // if more then one create more rows accordingly
     {
         let td1=document.createElement("td");
-        td1.addEventListener('click', () => {td.style.background = colorSelected;} );
+        td1.addEventListener('click', () => {td1.style.background = colorSelected;} );
         tr.appendChild(td1);
     }
     numRows+=1; //increase the number of rows recorded in the system
@@ -34,8 +34,7 @@ function addC() {
 
         let td=document.createElement("td");        
         td.addEventListener('click', () => {td.style.background = colorSelected;} ); //creates each cell with a function activated on click hat changes the color based off the color selected
-        
-        //td.setAttribute('onclick','alert(this["position"])');
+
         row[i].appendChild(td);  //adding the cell to the current row
     }
     numCols+=1;
@@ -43,7 +42,7 @@ function addC() {
     {
         let tr=document.createElement("tr"); 
         let td=document.createElement("td");
-        //td.setAttribute('click','changeColor(td)');
+
         td.addEventListener('click', () => {td.style.background = colorSelected;} );  //creates each cell with a function activated on click hat changes the color based off the color selected
     
         tr.appendChild(td);
