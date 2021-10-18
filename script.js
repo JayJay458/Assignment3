@@ -6,6 +6,7 @@ let colorSelected = "White";
 function addR() {
     let tr=document.createElement("tr"); 
     let td=document.createElement("td");
+    td.setAttribute('onclick','changeColor()');
     tr.appendChild(td); // create a minimum of one column
     for(let i =1;i<numCols;i++) // if more then one create more rows accordingly
     {
@@ -25,9 +26,12 @@ function addR() {
 function addC() {
     let grid=document.getElementById("grid");
     let row=grid.querySelectorAll("tr");  // return an array of all row element(tr)
+    
     for(let i=0;i<numRows;i++)  // add a column with respect to the rows
     {
+
         let td=document.createElement("td");
+        td.setAttribute('onclick','changeColor()');
         row[i].appendChild(td);  //adding the cell to the current row
     }
     numCols+=1;
@@ -35,7 +39,9 @@ function addC() {
     {
         let tr=document.createElement("tr"); 
         let td=document.createElement("td");
+        td.setAttribute('onclick','changeColor()');
         tr.appendChild(td);
+        
         grid.appendChild(tr);
         numRows=1;
     }
@@ -100,26 +106,9 @@ function fillU(){
 
 //changes the color of a selected cell to the global color value
 function changeColor(){
-    let grid=document.getElementById("grid");
+    console.log(1);
+    //document.body.style.background=colorSelected;
     
 }
 
 
-function addRowHandlers() {
-    let grid=document.getElementById("grid");
-    var rows = grid.getElementsByTagName("tr");
-        for (i = 0; i < rows.length; i++) {
-            var currentRow = grid.rows[i];
-            var createClickHandler = 
-                function(row) 
-                {
-                    return function() { 
-                                            var cell = row.getElementsByTagName("td")[0];
-                                            alert("clicked cell");
-                                     };
-                };
-    
-            currentRow.onclick = createClickHandler(currentRow);
-        }
-    }
-window.onload = addRowHandlers();
