@@ -6,11 +6,14 @@ let colorSelected = "White";
 function addR() {
     let tr=document.createElement("tr"); 
     let td=document.createElement("td");
-    td.setAttribute('onclick','changeColor()');
+
+    td.addEventListener('click', () => {td.style.background = colorSelected;} ); //creates each cell with a function activated on click hat changes the color based off the color selected
+    
     tr.appendChild(td); // create a minimum of one column
     for(let i =1;i<numCols;i++) // if more then one create more rows accordingly
     {
         let td1=document.createElement("td");
+        td1.addEventListener('click', () => {td.style.background = colorSelected;} );
         tr.appendChild(td1);
     }
     numRows+=1; //increase the number of rows recorded in the system
@@ -20,7 +23,6 @@ function addR() {
     }
     let grid=document.getElementById("grid");
     grid.appendChild(tr); //add the row to the column
-
 }
 //Add a column
 function addC() {
@@ -30,8 +32,10 @@ function addC() {
     for(let i=0;i<numRows;i++)  // add a column with respect to the rows
     {
 
-        let td=document.createElement("td");
-        td.setAttribute('onclick','changeColor()');
+        let td=document.createElement("td");        
+        td.addEventListener('click', () => {td.style.background = colorSelected;} ); //creates each cell with a function activated on click hat changes the color based off the color selected
+        
+        //td.setAttribute('onclick','alert(this["position"])');
         row[i].appendChild(td);  //adding the cell to the current row
     }
     numCols+=1;
@@ -39,7 +43,9 @@ function addC() {
     {
         let tr=document.createElement("tr"); 
         let td=document.createElement("td");
-        td.setAttribute('onclick','changeColor()');
+        //td.setAttribute('click','changeColor(td)');
+        td.addEventListener('click', () => {td.style.background = colorSelected;} );  //creates each cell with a function activated on click hat changes the color based off the color selected
+    
         tr.appendChild(td);
         
         grid.appendChild(tr);
@@ -100,15 +106,3 @@ function clearAll(){
 function fillU(){
     alert("Clicked Fill All Uncolored")
 }
-
-
-
-
-//changes the color of a selected cell to the global color value
-function changeColor(){
-    console.log(1);
-    //document.body.style.background=colorSelected;
-    
-}
-
-
