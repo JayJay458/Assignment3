@@ -107,7 +107,12 @@ function fill(){
 }
 
 function clearAll(){
-    alert("Clicked Clear All")
+    // alert("Clicked Clear All")
+    let grid =document.getElementById("grid");
+    let td = grid.querySelectorAll("td"); 
+    td.forEach(function(td){
+        td.style.background = "White";
+    });
 }
 
 function fillU(){
