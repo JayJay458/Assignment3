@@ -1,6 +1,5 @@
 let numRows = 0;
 let numCols = 0;
-let colorSelected = "White"; 
 
 //Add a row
 function addR() {
@@ -108,10 +107,17 @@ function clearAll(){
     let grid =document.getElementById("grid");
     let td = grid.querySelectorAll("td"); 
     td.forEach(function(td){
-        td.style.background = "White";
+        td.style.backgroundColor = "";
     });
 }
 
 function fillU(){
-    alert("Clicked Fill All Uncolored")
+    // alert("Clicked Fill All Uncolored")
+    let td = grid.querySelectorAll("td");
+    td.forEach(function (td) {
+        if (td.style.backgroundColor === "") {
+            td.style.backgroundColor = colorSelected;
+        }
+    });
 }
+
