@@ -96,13 +96,10 @@ function selected(){
 function fill(){
     // alert("Clicked Fill All")
     let grid =document.getElementById("grid");
-    let row=grid.querySelectorAll("tr");  // return an array of all row element(tr) 
-    row.forEach(function(r){
-        let c = r.children; //return an array of children as objects
-        for(let i = 0; i< c.length; i++){
-            c[i].style.backgroundColor = colorSelected;
-        }
-        }); 
+    let td = grid.querySelectorAll("td"); 
+    td.forEach(function(td){
+        td.style.background = colorSelected; 
+    })
 }
 
 function clearAll(){
