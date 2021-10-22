@@ -22,8 +22,8 @@ function addR() {
     }
     let grid=document.getElementById("grid");
     grid.appendChild(tr); //add the row to the column
-    //console.log(numCols);
-   // console.log(numRows);
+
+    
 }
 //Add a column
 function addC() {
@@ -52,9 +52,6 @@ function addC() {
         numRows=1;
     }
 
-   // console.log(numCols);
-    //console.log(numRows);
-
 }
 
 //Remove a row
@@ -74,8 +71,8 @@ function removeR() {
             numCols=0;
         }
     }
-    //console.log(numCols);
-    //console.log(numRows);
+
+
 }
 //Remove a column
 function removeC() {
@@ -90,16 +87,17 @@ function removeC() {
         for(let i=0;i<numRows;i++) //remove one cell from every row
         {
             let lastCell=row[i].lastElementChild; //select the last element of every row
+            console.log(lastCell);
             let remove=row[i].removeChild(lastCell);
         }
         numCols-=1; //decrease column count by one
         if(numCols===0)
         {
+            grid.innerHTML='';
             numRows=0;
         }
     }
-    //onsole.log(numCols);
-    //console.log(numRows);
+
 }
 //sets global var for selected color
 function selected(){
